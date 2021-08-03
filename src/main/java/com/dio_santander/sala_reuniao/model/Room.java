@@ -29,7 +29,8 @@ public class Room {
         this.endHour = endHour;
     }
 
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return this.id;
     }
@@ -38,36 +39,50 @@ public class Room {
         this.id = id;
     }
 
+    @Column(name="name", nullable = false)
     public String getName() {
         return this.name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    @Column(name="date", nullable = false)
     public String getData() {
         return this.data;
     }
-
+    
     public void setData(String data) {
         this.data = data;
     }
-
+    
+    @Column(name="startHour", nullable = false)
     public String getStartHour() {
         return this.startHour;
     }
-
+    
     public void setStartHour(String startHour) {
         this.startHour = startHour;
     }
-
+    
+    @Column(name="endHour", nullable = false)
     public String getEndHour() {
         return this.endHour;
     }
-
+    
     public void setEndHour(String endHour) {
         this.endHour = endHour;
     }
     
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", name='" + getName() + "'" +
+            ", data='" + getData() + "'" +
+            ", startHour='" + getStartHour() + "'" +
+            ", endHour='" + getEndHour() + "'" +
+            "}";
+    }
 }
