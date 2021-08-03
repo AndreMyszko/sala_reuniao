@@ -13,6 +13,7 @@ import com.dio_santander.sala_reuniao.repository.RoomRepositoy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,7 @@ public class RoomController {
         return ResponseEntity.ok(updateRoom);
     }
 
+    @DeleteMapping("/rooms/{id}")
     public Map<String, Boolean> deleteRoom(@PathVariable(value = "id") Long roomId) throws ResourceNotFoundException{
         Room room = roomRepository.findById(roomId).orElseThrow(()-> new ResourceNotFoundException("Room nor found for this ID:" + roomId));
         roomRepository.delete(room);
